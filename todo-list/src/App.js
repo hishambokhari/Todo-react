@@ -12,7 +12,33 @@ class App extends React.Component {
         key:''
       }
     }
+    this.handleInput = this.handleInput.bind(this);
+    this.addItem = this.addItem.bind(this);
   }
+    handleInput(e){
+      this.setState({
+        currentItem:{
+          text: e.target.value,
+          key:Date.now()
+        }
+      })
+    }
+    addItem(e){
+      e.preventDefault();
+      const newItem = this.state.currentItem;
+      console.log(newItem);
+      if(newItem.text !== ""){
+        const newItems=[...this.state.items, newItems];
+        this.setState({
+          items:newItems,
+          currentItems:{
+            text:'',
+            key:''
+          }
+        })
+      }
+    }
+  
   render() {
   return (
     <div className="App">
